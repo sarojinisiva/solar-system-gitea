@@ -6,6 +6,13 @@ pipeline {
         }
     }
     stages {
+        stage('Install Git') {
+            steps {
+                script {
+                    sh 'apk add --no-cache git' // Install Git in Alpine
+                }
+            }
+        }
         stage('Clone Repository') {
             steps {
                 script {
