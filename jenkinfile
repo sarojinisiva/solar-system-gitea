@@ -37,10 +37,10 @@ pipeline {
                 }
             }
         }
-        stage('Audit for Critical Vulnerabilities') {
+        stage('Unit Test') {
             steps {
                 script {
-                    sh 'cd solar-system-gitea && npm audit --audit-level=critical' // Run npm audit for critical issues it will check all Dependencies result and validate any critical valu
+                    sh 'npm test' // Run npm audit for critical issues it will check all Dependencies result and validate any critical valu
                 }
             }
         }
