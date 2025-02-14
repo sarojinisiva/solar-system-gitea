@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:20-alpine'
+            args '--user=root' // Ensures necessary permissions
+        }
+    }
+    stages {
+        stage('Check npm Version') {
+            steps {
+                script {
+                    sh 'node -v' // Check Node.js version
+                    sh 'npm -v'  // Check npm version
+                }
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                script {
+                   sh 'npm install --no-audit'  // Check npm version
+                }
+            }
+        }
+    }
+}
