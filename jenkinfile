@@ -6,18 +6,26 @@ pipeline {
         }
     }
     stages {
+        stage('Clone Repository') {
+            steps {
+                script {
+                    sh 'git clone https://github.com/sarojinisiva/solar-system-gitea.git' // Clone the repository
+                    sh 'cd solar-system-gitea' // Navigate into the repository
+                }
+            }
+        }
         stage('Check npm Version') {
             steps {
                 script {
-                    sh 'node -v' // Check Node.js version
-                    sh 'npm -v'  // Check npm version
+                    sh 'node -v'  // Display Node.js version
+                    sh 'npm -v'   // Display npm version
                 }
             }
         }
         stage('Install Dependencies') {
             steps {
                 script {
-                   sh 'npm install --no-audit'  // Check npm version
+                    sh 'cd solar-system-gitea && npm install --no-audit' // Install dependencies inside the cloned repository
                 }
             }
         }
