@@ -32,7 +32,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    sh 'cd solar-system-gitea && npm install --no-audit' // Install dependencies inside the cloned repository
+                    sh 'cd solar-system-gitea && ls -lrt && npm install --no-audit && ls -lrt' // Install dependencies inside the cloned repository
                 }
             }
         }
