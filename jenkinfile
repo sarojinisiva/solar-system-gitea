@@ -16,6 +16,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 script {
+                    sh 'rm -rf solar-system-gitea || true' // Remove existing directory if it exists
                     sh 'git clone https://github.com/sarojinisiva/solar-system-gitea.git' // Clone the repository
                     sh 'cd solar-system-gitea' // Navigate into the repository
                 }
@@ -32,7 +33,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    sh 'cd solar-system-gitea && ls -lrt && npm install --no-audit && ls -lrt' // Install dependencies inside the cloned repository
+                    sh 'cd solar-system-gitea && npm install --no-audit' // Install dependencies inside the cloned repository
                 }
             }
         }
